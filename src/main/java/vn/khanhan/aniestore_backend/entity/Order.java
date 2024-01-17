@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "order")
+@Table(name = "order_table")
 public class Order {
     @Id
     @Column(name = "id")
@@ -30,8 +30,8 @@ public class Order {
     @Column(name = "order_date", nullable = false)
     private Date orderDate;
 
-    @Column(name = "is_complete", nullable = false)
-    private boolean isComplete;
+    @Column(name = "status", nullable = false)
+    private boolean status;
 
     @ManyToMany(cascade = {
             CascadeType.DETACH,

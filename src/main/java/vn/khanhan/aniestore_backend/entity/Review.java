@@ -27,8 +27,17 @@ public class Review {
             CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
-            CascadeType.REFRESH
+            CascadeType.REFRESH,
     }, fetch = FetchType.LAZY)
-    @Column(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private Users user;
+
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH,
+    }, fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private Products products;
 }

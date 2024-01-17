@@ -78,7 +78,7 @@ public class Users {
     private List<Roles> rolesList;
 
     @OneToMany(
-            mappedBy = "users",
+            mappedBy = "user",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
