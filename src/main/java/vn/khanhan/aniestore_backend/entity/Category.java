@@ -17,6 +17,7 @@ import java.util.UUID;
 public class Category {
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private UUID id;
 
     @Column(name = "category_name", nullable = false)

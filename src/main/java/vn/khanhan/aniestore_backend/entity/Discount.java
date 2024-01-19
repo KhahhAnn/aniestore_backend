@@ -19,6 +19,7 @@ import java.util.UUID;
 public class Discount {
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private UUID id;
 
     @Column(name = "discount_name", nullable = false)

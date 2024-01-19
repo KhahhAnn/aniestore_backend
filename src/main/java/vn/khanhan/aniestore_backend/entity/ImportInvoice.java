@@ -19,6 +19,7 @@ import java.util.UUID;
 public class ImportInvoice  {
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private UUID id;
 
     @Column(name = "invoice_name")

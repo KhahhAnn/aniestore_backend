@@ -16,6 +16,7 @@ import java.util.UUID;
 public class Event {
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private UUID id;
 
     @Column(name = "event_name", nullable = false)

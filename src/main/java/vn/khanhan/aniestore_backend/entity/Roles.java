@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,6 +17,8 @@ import java.util.UUID;
 public class Roles {
     @Id
     @Column(name = "id")
+    @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
+    @GenericGenerator(name = "UUID")
     private UUID id;
 
     @Column(name = "role_name", nullable = false, length = 10)
@@ -28,7 +31,7 @@ public class Roles {
             CascadeType.REFRESH
     }, fetch = FetchType.LAZY)
     @JoinTable(
-            name = "user_role",
+            name = "users_roles",
             joinColumns = @JoinColumn(name = "id_role"),
             inverseJoinColumns = @JoinColumn(name = "id_user")
     )

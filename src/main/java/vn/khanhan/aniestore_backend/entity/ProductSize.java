@@ -16,6 +16,7 @@ import java.util.UUID;
 public class ProductSize {
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private UUID id;
 
     @Column(name = "size", nullable = false)

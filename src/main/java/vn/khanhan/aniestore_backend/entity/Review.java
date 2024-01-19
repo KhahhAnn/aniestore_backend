@@ -15,6 +15,7 @@ import java.util.UUID;
 public class Review {
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private UUID id;
 
     @Column(name = "content_rated")

@@ -16,6 +16,7 @@ import java.util.UUID;
 public class ProductColor {
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private UUID id;
 
     @Column(name = "color", nullable = false)
