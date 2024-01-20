@@ -34,10 +34,15 @@ public class Users {
 
     @Column(name = "password", nullable = false)
     @NotNull(message = "Vui lòng nhập password! ")
-    @Min(value = 8, message = "Password phải có ít nhất 8 ký tự")
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).*$",
-            message = "Password phải chứa ít nhất 1 ký tự hoa, 1 số, và 1 ký tự đặc biệt")
+//    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,16}$",
+//            message = "Password phải chứa ít nhất 1 ký tự hoa, 1 số và từ 8-16 ký tự")
     private String password;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
 
     @Column(name = "is_active", nullable = false)
     private boolean isActive;

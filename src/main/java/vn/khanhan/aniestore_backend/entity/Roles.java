@@ -17,8 +17,7 @@ import java.util.UUID;
 public class Roles {
     @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
-    @GenericGenerator(name = "UUID")
+    @GeneratedValue
     private UUID id;
 
     @Column(name = "role_name", nullable = false, length = 10)

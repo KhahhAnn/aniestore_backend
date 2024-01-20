@@ -1,0 +1,32 @@
+package vn.khanhan.aniestore_backend.service.implement;
+
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+import vn.khanhan.aniestore_backend.service.EmailService;
+
+@Data
+@AllArgsConstructor
+@Service
+public class EmailServiceImpl implements EmailService {
+    private JavaMailSender mailSender;
+
+    @Override
+    public void sendEmail(String from, String to, String subject, String text) {
+        MimeMessage message = this.mailSender.createMimeMessage();
+        try {
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setTo(to);
+            helper.setFrom(from);
+            helper.setSubject(subject);
+            helper.setText(text, true);
+        } catch (MessagingException messagingException) {
+            throw new RuntimeException(messagingException);
+        }
+        this.mailSender.send(message);
+    }
+}
