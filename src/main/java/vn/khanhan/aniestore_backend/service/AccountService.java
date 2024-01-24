@@ -15,4 +15,6 @@ public interface AccountService {
     public ResponseEntity<?> activeAccount(String email, String activeCode);
 
     public ResponseEntity<?> signIn(Users user);
+
+    public boolean isAdmin(String email);
 }

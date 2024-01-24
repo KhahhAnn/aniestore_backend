@@ -88,4 +88,11 @@ public class AccountServiceImpl implements AccountService {
         }
         return ResponseEntity.ok("Logged in successfully!");
     }
+
+    @Override
+    public boolean isAdmin(String email) {
+        List<Roles> rolesList = this.usersRepository.findByEmail(email).getRolesList();
+        return rolesList.stream().anyMatch(role -> role.getRoleName().equals("ADMIN_ROLE"));
+
+    }
 }
