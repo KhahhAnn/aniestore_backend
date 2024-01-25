@@ -74,7 +74,7 @@ public class Users {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH,
-    }, fetch = FetchType.LAZY)
+    }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "id_user"),
@@ -85,7 +85,7 @@ public class Users {
 
     @OneToMany(
             mappedBy = "user",
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             cascade = CascadeType.ALL
     )
     private List<Review> reviewList;
@@ -95,7 +95,7 @@ public class Users {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH
-    }, fetch = FetchType.LAZY)
+    }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_discount",
             joinColumns = @JoinColumn(name = "user_id"),

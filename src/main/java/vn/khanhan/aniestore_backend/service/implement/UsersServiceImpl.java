@@ -13,6 +13,7 @@ import vn.khanhan.aniestore_backend.repository.UsersRepository;
 import vn.khanhan.aniestore_backend.service.UsersService;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,6 +24,12 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public Users findUserByEmail(String email) {
         return this.usersRepository.findByEmail(email);
+    }
+    @Override
+    public boolean isAdmin(String email) {
+        List<Roles> rolesList = this.usersRepository.findByEmail(email).getRolesList();
+        return rolesList.stream().anyMatch(role -> role.getRoleName().equals("ADMIN_ROLE"));
+
     }
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

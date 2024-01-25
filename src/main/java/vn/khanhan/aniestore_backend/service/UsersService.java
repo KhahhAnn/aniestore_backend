@@ -7,4 +7,6 @@ import vn.khanhan.aniestore_backend.entity.Users;
 @Service
 public interface UsersService extends UserDetailsService {
     public Users findUserByEmail(String email);
+    public boolean isAdmin(String email);
+
 }

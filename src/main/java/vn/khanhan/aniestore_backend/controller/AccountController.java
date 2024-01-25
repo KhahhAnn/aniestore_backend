@@ -51,7 +51,8 @@ public class AccountController {
             );
             if(authentication.isAuthenticated()) {
                 final String token = jwtService.generateToken(loginRequest.getEmail());
-                return ResponseEntity.ok(new JwtResponse(token));
+                String userImg = this.usersService.findUserByEmail(loginRequest.getEmail()).getImage();
+                return ResponseEntity.ok(new JwtResponse(token, userImg));
             }
         }catch (AuthenticationException exception) {
             return ResponseEntity.badRequest().body("User account or password incorrect!");

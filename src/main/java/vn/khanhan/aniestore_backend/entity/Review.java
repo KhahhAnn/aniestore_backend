@@ -29,7 +29,7 @@ public class Review {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH,
-    }, fetch = FetchType.LAZY)
+    }, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private Users user;
 
@@ -38,7 +38,7 @@ public class Review {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH,
-    }, fetch = FetchType.LAZY)
+    }, fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     private Products products;
 }

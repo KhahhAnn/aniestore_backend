@@ -5,7 +5,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,20 +17,17 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Component
-
 public class JwtService {
     @Value("${SERECTKEY}")
     private String SERECT;
     @Autowired
     private UsersService usersService;
-    @Autowired
-    private AccountService accountService;
 
     public String generateToken(String email) {
         Map<String, Object> clamis = new HashMap<>();
-        clamis.put("isAdmin", this.accountService.isAdmin(email));
+        clamis.put("isAdmin", this.usersService.isAdmin(email));
         clamis.put("userName", this.usersService.findUserByEmail(email).getUserName());
-        clamis.put("userImg", this.usersService.findUserByEmail(email).getImage());
+//        clamis.put("user", this.usersService.findUserByEmail(email));
         return createToken(clamis, email);
     }
 
