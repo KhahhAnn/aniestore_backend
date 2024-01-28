@@ -1,5 +1,6 @@
 package vn.khanhan.aniestore_backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
@@ -9,7 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -101,5 +102,6 @@ public class Users {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "discount_id")
     )
+    @JsonIgnore
     private List<Discount> discountList;
 }

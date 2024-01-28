@@ -19,13 +19,21 @@ public class MethodRestConfig implements RepositoryRestConfigurer {
         config.exposeIdsFor(
                 entityManager.getMetamodel()
                         .getEntities()
-                        .stream().map(Type::getJavaType)
+                        .stream()
+                        .map(Type::getJavaType)
+                        .toArray(Class[]::new)
+        );
+
+        config.exposeIdsFor(
+                entityManager.getMetamodel()
+                        .getEntities()
+                        .stream()
+                        .flatMap(entity -> entity.getAttributes().stream())
+                        .filter(attribute -> attribute.isAssociation())
+                        .map(attribute -> (Class<?>) attribute.getJavaType())
                         .toArray(Class[]::new)
         );
     }
 
-//    @Override
-//    public void configureJacksonObjectMapper(ObjectMapper objectMapper) {
-//        RepositoryRestConfigurer.super.configureJacksonObjectMapper(objectMapper);
-//    }
+
 }

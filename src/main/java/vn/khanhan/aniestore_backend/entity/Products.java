@@ -1,5 +1,6 @@
 package vn.khanhan.aniestore_backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -28,9 +29,11 @@ public class Products {
     @Column(name = "type_product")
     private String typeProduct;
 
-    @Column(name = "quatity", nullable = false)
-    @Min(value = 0, message = "Số lượng sản phẩm phải lớn hơn hoặc bằng 0!")
-    private int quantityOfStock;
+    @Column(name = "color")
+    private String color;
+
+    @Column(name = "size")
+    private String size;
 
     @Column(name = "purchase_price", nullable = false)
     private double purchasePrice;
@@ -41,38 +44,16 @@ public class Products {
     @Column(name = "sale_prices")
     private double salePrices;
 
+   @Column(name = "quantity_of_stock")
+   private int quantity;
+
+
     @OneToMany(
             mappedBy = "products",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
     private List<Review> reviewList;
-
-    @ManyToMany(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH
-    }, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "products_colors",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "color_id")
-    )
-    private List<ProductColor> productColorList;
-
-    @ManyToMany(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH
-    }, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "products_sizes",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "size_id")
-    )
-    private List<ProductSize> productSizeList;
 
     @ManyToMany(cascade = {
             CascadeType.DETACH,
