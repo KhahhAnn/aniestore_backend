@@ -33,16 +33,10 @@ public class ImportInvoice  {
     @Min(value = 1, message = "Hóa đơn nhập phải lớn hơn 0!")
     private double totalPrice;
 
-    @ManyToMany(cascade = {
-            CascadeType.MERGE,
-            CascadeType.DETACH,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH
-    }, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "import_products",
-            joinColumns = @JoinColumn(name = "invoice_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id")
+    @OneToMany(
+            mappedBy = "importInvoice",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
     )
-    private List<Products> productsList;
+    private List<ImportInvoiceDetail> importInvoiceDetails;
 }

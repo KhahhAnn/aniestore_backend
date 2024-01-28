@@ -19,7 +19,7 @@ public class ImportInvoiceServiceImpl implements ImportInvoiceService {
         newInvoice.setImportDate(importInvoice.getImportDate() != null ? importInvoice.getImportDate() :new Date(System.currentTimeMillis()));
         newInvoice.setInvoiceName(importInvoice.getInvoiceName());
         newInvoice.setTotalPrice(importInvoice.getTotalPrice());
-        newInvoice.setProductsList(importInvoice.getProductsList());
+        newInvoice.setImportInvoiceDetails(importInvoice.getImportInvoiceDetails());
         this.importInvoiceRepository.saveAndFlush(newInvoice);
         return newInvoice;
     }

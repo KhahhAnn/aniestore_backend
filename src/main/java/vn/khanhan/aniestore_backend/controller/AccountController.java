@@ -37,11 +37,6 @@ public class AccountController {
         ResponseEntity<?> response = this.accountService.activeAccount(email, activeCode);
         return response;
     }
-//    @PostMapping("/sign-in")
-//    public ResponseEntity<?> loginUser(@Validated @RequestBody Users user)  {
-//        ResponseEntity<?> response = this.accountService.signIn(user);
-//        return response;
-//    }
 
     @PostMapping("/sign-in")
     public ResponseEntity<?> loginUser(@Validated @RequestBody LoginRequest loginRequest)  {

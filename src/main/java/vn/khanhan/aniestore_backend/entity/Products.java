@@ -75,4 +75,7 @@ public class Products {
             CascadeType.REFRESH
     }, fetch = FetchType.LAZY)
     private Category category;
+
+    @OneToOne(mappedBy = "products")
+    private ImportInvoiceDetail importInvoiceDetail;
 }
