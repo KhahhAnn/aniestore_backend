@@ -14,19 +14,19 @@ public class DiscountController {
     private DiscountService discountService;
 
     @PostMapping
-    public ResponseEntity<?> addCategory(@RequestBody Discount discount) {
+    public ResponseEntity<?> addDiscount(@RequestBody Discount discount) {
         Discount response = this.discountService.addNewDiscount(discount);
         return ResponseEntity.ok().body(response);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCategory(@RequestBody Discount discount, @PathVariable UUID id) {
+    public ResponseEntity<?> updateDiscount(@RequestBody Discount discount, @PathVariable UUID id) {
         Discount response = this.discountService.updateDiscount(discount, id);
         return ResponseEntity.ok().body(response);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> updateCategory(@PathVariable UUID id) {
+    public ResponseEntity<?> updateDiscount(@PathVariable UUID id) {
         ResponseEntity<?> response = this.discountService.deleteDiscount(id);
         return response;
     }

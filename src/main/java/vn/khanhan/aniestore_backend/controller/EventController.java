@@ -23,13 +23,13 @@ public class EventController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCategory(@RequestBody Event event, @PathVariable UUID id) {
+    public ResponseEntity<?> updateEvent(@RequestBody Event event, @PathVariable UUID id) {
         Event response = this.eventService.updateEvent(event, id);
         return ResponseEntity.ok().body(response);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> updateCategory(@PathVariable UUID id) {
+    public ResponseEntity<?> updateEvent(@PathVariable UUID id) {
         ResponseEntity<?> response = this.eventService.deleteEvent(id);
         return response;
     }
