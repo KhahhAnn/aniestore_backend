@@ -33,6 +33,12 @@ public class ImportInvoice  {
     @Min(value = 1, message = "Hóa đơn nhập phải lớn hơn 0!")
     private double totalPrice;
 
+    @Column(name = "create_at")
+    private Date createAt;
+
+    @Column(name = "update_at")
+    private Date updateAt;
+
     @OneToMany(
             mappedBy = "importInvoice",
             fetch = FetchType.LAZY,

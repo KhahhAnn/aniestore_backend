@@ -13,8 +13,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "invoice_detail")
-public class ImportInvoiceDetail {
+@Table(name = "order_detail")
+public class OrderDetail {
     @Id
     @Column(name = "id")
     @GeneratedValue
@@ -22,7 +22,7 @@ public class ImportInvoiceDetail {
 
     @Column(name = "quantity_import")
     @Min(value = 0, message = "Số lượng nhập phai lớn hơn 0")
-    private int quantityImport;
+    private int quantity;
 
     @OneToOne
     @JoinColumn(name = "product_id")
@@ -43,7 +43,7 @@ public class ImportInvoiceDetail {
             CascadeType.PERSIST,
             CascadeType.REFRESH
     }, fetch = FetchType.LAZY)
-    @JoinColumn(name = "import_invoice_id")
-    private ImportInvoice importInvoice;
+    @JoinColumn(name = "order_id")
+    private Order order;
 
 }

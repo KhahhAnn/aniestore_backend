@@ -12,6 +12,7 @@ import vn.khanhan.aniestore_backend.repository.UsersRepository;
 import vn.khanhan.aniestore_backend.service.AccountService;
 import vn.khanhan.aniestore_backend.service.EmailService;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,6 +39,8 @@ public class AccountServiceImpl implements AccountService {
         user.setActive(false);
         List<Roles> defaultRoles = this.rolesRepository.findByRoleName("USER_ROLE");
         user.setRolesList(defaultRoles);
+        user.setCreateAt(new Date(System.currentTimeMillis()));
+        user.setUpdateAt(new Date(System.currentTimeMillis()));
         Users newUser = this.usersRepository.saveAndFlush(user);
         sendMailActiveCode(user.getEmail(), user.getActiveCode());
         return ResponseEntity.ok("Register success!");
@@ -70,6 +73,7 @@ public class AccountServiceImpl implements AccountService {
         if(activeCode.equals(user.getActiveCode())) {
             user.setActive(true);
             user.setActiveCode("");
+            user.setUpdateAt(new Date(System.currentTimeMillis()));
             this.usersRepository.save(user);
             return ResponseEntity.ok("Active success!");
         } else {

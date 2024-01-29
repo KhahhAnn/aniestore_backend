@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,6 +25,11 @@ public class Category {
     @NotNull(message = "Vui lòng nhập tên loại sản phẩm!")
     private String categoryName;
 
+    @Column(name = "create_at")
+    private Date createAt;
+
+    @Column(name = "update_at")
+    private Date updateAt;
     @OneToMany(
             mappedBy = "category",
             cascade = {

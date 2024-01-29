@@ -34,6 +34,7 @@ public class Order {
     @Column(name = "status", nullable = false)
     private boolean status;
 
+
     @ManyToMany(cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,
@@ -46,4 +47,17 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
     private List<Products> productsList;
+
+    @OneToMany(
+            mappedBy = "order",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    private List<OrderDetail> orderDetails;
+
+    @Column(name = "create_at")
+    private Date createAt;
+
+    @Column(name = "update_at")
+    private Date updateAt;
 }

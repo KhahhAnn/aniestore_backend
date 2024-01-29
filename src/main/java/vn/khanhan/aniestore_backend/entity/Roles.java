@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,4 +36,10 @@ public class Roles {
             inverseJoinColumns = @JoinColumn(name = "id_user")
     )
     private List<Users> userList;
+
+    @Column(name = "create_at")
+    private Date createAt;
+
+    @Column(name = "update_at")
+    private Date updateAt;
 }

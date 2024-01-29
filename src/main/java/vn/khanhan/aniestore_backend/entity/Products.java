@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -47,7 +48,6 @@ public class Products {
    @Column(name = "quantity_of_stock")
    private int quantity;
 
-
     @OneToMany(
             mappedBy = "products",
             fetch = FetchType.LAZY,
@@ -55,18 +55,8 @@ public class Products {
     )
     private List<Review> reviewList;
 
-    @ManyToMany(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH
-    }, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "order_products",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id")
-    )
-    private List<Order> orderList;
+    @OneToOne(mappedBy = "products")
+    private OrderDetail orderDetail;
 
     @ManyToOne(cascade = {
             CascadeType.DETACH,
@@ -78,4 +68,10 @@ public class Products {
 
     @OneToOne(mappedBy = "products")
     private ImportInvoiceDetail importInvoiceDetail;
+
+    @Column(name = "create_at")
+    private Date createAt;
+
+    @Column(name = "update_at")
+    private Date updateAt;
 }

@@ -104,4 +104,10 @@ public class Users {
     )
     @JsonIgnore
     private List<Discount> discountList;
+
+    @Column(name = "create_at")
+    private java.util.Date createAt;
+
+    @Column(name = "update_at")
+    private java.util.Date updateAt;
 }
