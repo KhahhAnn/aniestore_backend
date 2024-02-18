@@ -29,7 +29,7 @@ public class OrderDetailController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> updateOrderDetail(@PathVariable UUID id) {
+    public ResponseEntity<?> deleteOrderDetail(@PathVariable UUID id) {
         ResponseEntity<?> response = this.orderDetailService.deleteOrderDetail(id);
         return response;
     }

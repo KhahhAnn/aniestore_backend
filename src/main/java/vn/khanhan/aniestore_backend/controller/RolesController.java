@@ -29,7 +29,7 @@ public class RolesController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> updateRole(@PathVariable UUID id) {
+    public ResponseEntity<?> deleteRole(@PathVariable UUID id) {
         ResponseEntity<?> response = this.rolesService.deleteRole(id);
         return response;
     }

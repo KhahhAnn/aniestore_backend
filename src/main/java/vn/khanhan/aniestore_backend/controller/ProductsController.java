@@ -29,7 +29,7 @@ public class ProductsController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> updateProduct(@PathVariable UUID id) {
+    public ResponseEntity<?> deleteProduct(@PathVariable UUID id) {
         ResponseEntity<?> response = this.productsService.deleteProduct(id);
         return response;
     }

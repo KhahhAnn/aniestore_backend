@@ -16,20 +16,20 @@ import java.util.UUID;
 public class EventController {
     private EventService eventService;
 
-    @PostMapping
-    public ResponseEntity<?> addEvent(@RequestBody Event event) {
+    @PostMapping("/")
+    public ResponseEntity<?> add(@RequestBody Event event) {
         Event response = this.eventService.addNewEvent(event);
         return ResponseEntity.ok().body(response);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateEvent(@RequestBody Event event, @PathVariable UUID id) {
+    public ResponseEntity<?> update(@RequestBody Event event, @PathVariable UUID id) {
         Event response = this.eventService.updateEvent(event, id);
         return ResponseEntity.ok().body(response);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> updateEvent(@PathVariable UUID id) {
+    public ResponseEntity<?> delete(@PathVariable UUID id) {
         ResponseEntity<?> response = this.eventService.deleteEvent(id);
         return response;
     }

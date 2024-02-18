@@ -17,19 +17,19 @@ public class ReviewController {
     private ReviewService reviewService;
 
     @PostMapping
-    public ResponseEntity<?> addReview(@RequestBody Review review) {
+    public ResponseEntity<?> add(@RequestBody Review review) {
         Review response = this.reviewService.addNewReview(review);
         return ResponseEntity.ok().body(response);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateReview(@RequestBody Review review, @PathVariable UUID id) {
+    public ResponseEntity<?> update(@RequestBody Review review, @PathVariable UUID id) {
         Review response = this.reviewService.updateReview(review, id);
         return ResponseEntity.ok().body(response);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> updateReview(@PathVariable UUID id) {
+    public ResponseEntity<?> delete(@PathVariable UUID id) {
         ResponseEntity<?> response = this.reviewService.deleteReview(id);
         return response;
     }

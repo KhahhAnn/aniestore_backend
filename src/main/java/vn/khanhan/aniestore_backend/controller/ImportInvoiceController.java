@@ -29,7 +29,7 @@ public class ImportInvoiceController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> updateCategory(@PathVariable UUID id) {
+    public ResponseEntity<?> deleteCategory(@PathVariable UUID id) {
         ResponseEntity<?> response = this.importInvoiceService.deleteInvoice(id);
         return response;
     }

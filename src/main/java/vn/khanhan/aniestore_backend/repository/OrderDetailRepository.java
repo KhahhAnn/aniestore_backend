@@ -7,7 +7,7 @@ import vn.khanhan.aniestore_backend.entity.OrderDetail;
 
 import java.util.UUID;
 
-@RepositoryRestResource(path = "order")
+@RepositoryRestResource(path = "order-detail")
 @CrossOrigin("*")
 public interface OrderDetailRepository extends JpaRepository<OrderDetail, UUID> {
 

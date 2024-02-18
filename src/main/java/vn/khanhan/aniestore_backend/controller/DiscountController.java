@@ -26,7 +26,7 @@ public class DiscountController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> updateDiscount(@PathVariable UUID id) {
+    public ResponseEntity<?> deleteDiscount(@PathVariable UUID id) {
         ResponseEntity<?> response = this.discountService.deleteDiscount(id);
         return response;
     }
