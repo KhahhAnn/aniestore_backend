@@ -69,6 +69,13 @@ public class Products {
     @OneToOne(mappedBy = "products")
     private ImportInvoiceDetail importInvoiceDetail;
 
+    @OneToMany(
+            mappedBy = "product",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    private List<ImagesProduct> imagesProducts;
+
     @Column(name = "create_at")
     private Date createAt;
 
